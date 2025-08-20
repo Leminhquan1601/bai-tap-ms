@@ -1,32 +1,27 @@
-﻿
-using System;
+﻿using System;
 
-namespace dotnet_investment
+namespace dotnet_array_manipulation
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double money = 1.0;
-            int month = 1;
-            double interset_rate = 1.0;
+            int[] numbers = new int[5];
+            numbers[0] = 2;
+            numbers[1] = 5;
+            numbers[2] = 9;
+            numbers[3] = 6;
+            numbers[4] = 7;
 
-            Console.WriteLine("Enter investment amount: ");
-            money = Double.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter number of months: ");
-            month = Int32.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter annual interest rate in percentage: ");
-            interset_rate = Double.Parse(Console.ReadLine());
-
-            double total_interset = 0;
-            for (int i = 0; i < month; i++)
+            Console.WriteLine(numbers[0]);
+            Console.WriteLine(numbers[2]);
+            Console.WriteLine(numbers[3]);
+            int total = 0;
+            for (int i = 0; i < numbers.Length; i++)
             {
-                total_interset = money * (interset_rate / 100) / 12 * 3;
+                total = total + numbers[i];
             }
-
-            Console.WriteLine("Total of interset: " + total_interset);
+            Console.WriteLine(total.ToString());
         }
     }
 }
