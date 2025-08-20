@@ -1,45 +1,32 @@
 ﻿using System;
 
-namespace FindMaxIn2DArray
+namespace SumDiagonal
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.Write("Nhập số hàng: ");
-            int rows = int.Parse(Console.ReadLine());
-            Console.Write("Nhập số cột: ");
-            int cols = int.Parse(Console.ReadLine());
+            Console.Write("Nhập kích thước ma trận vuông: ");
+            int n = int.Parse(Console.ReadLine());
 
-            double[,] matrix = new double[rows, cols];
+            double[,] matrix = new double[n, n];
 
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < cols; j++)
+                for (int j = 0; j < n; j++)
                 {
                     Console.Write($"matrix[{i},{j}] = ");
                     matrix[i, j] = double.Parse(Console.ReadLine());
                 }
             }
 
-            double maxValue = matrix[0, 0];
-            int maxRow = 0, maxCol = 0;
-
-            for (int i = 0; i < rows; i++)
+            double sum = 0;
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < cols; j++)
-                {
-                    if (matrix[i, j] > maxValue)
-                    {
-                        maxValue = matrix[i, j];
-                        maxRow = i;
-                        maxCol = j;
-                    }
-                }
+                sum += matrix[i, i];
             }
 
-            Console.WriteLine($"\nPhần tử lớn nhất là: {maxValue}");
-            Console.WriteLine($"Tọa độ: hàng {maxRow}, cột {maxCol}");
+            Console.WriteLine($"\nTổng các phần tử trên đường chéo chính = {sum}");
         }
     }
 }
