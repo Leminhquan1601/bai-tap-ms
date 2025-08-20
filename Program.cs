@@ -1,77 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace mineText
+namespace FindMaxIn2DArray
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string[,] map = {
-            {"*", ".", ".", "."},
-            {".", ".", ".", "."},
-            {".", "*", ".", "."},
-            {".", ".", ".", "."}
-        };
-            int MAP_HEIGHT = map.GetLength(0);
-            int MAP_WIDTH = map.GetLength(1);
+            Console.Write("Nhập số hàng: ");
+            int rows = int.Parse(Console.ReadLine());
+            Console.Write("Nhập số cột: ");
+            int cols = int.Parse(Console.ReadLine());
 
-            string[,] mapReport = new string[MAP_HEIGHT, MAP_WIDTH];
-            for (int yOrdinate = 0; yOrdinate < MAP_HEIGHT; yOrdinate++)
+            double[,] matrix = new double[rows, cols];
+
+            for (int i = 0; i < rows; i++)
             {
-                for (int xOrdinate = 0; xOrdinate < map.GetLength(0); xOrdinate++)
+                for (int j = 0; j < cols; j++)
                 {
-                    string curentCell = map[yOrdinate, xOrdinate];
-                    if (curentCell.Equals("*"))
+                    Console.Write($"matrix[{i},{j}] = ");
+                    matrix[i, j] = double.Parse(Console.ReadLine());
+                }
+            }
+
+            double maxValue = matrix[0, 0];
+            int maxRow = 0, maxCol = 0;
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (matrix[i, j] > maxValue)
                     {
-                        mapReport[yOrdinate, xOrdinate] = "*";
-                    }
-                    else
-                    {
-                        int[,] NEIGHBOURS_ORDINATE = {
-                        {yOrdinate - 1, xOrdinate - 1}, {yOrdinate - 1, xOrdinate}, {yOrdinate - 1, xOrdinate + 1},
-                        {yOrdinate, xOrdinate - 1}, {yOrdinate, xOrdinate + 1},
-                        {yOrdinate + 1, xOrdinate - 1}, {yOrdinate + 1, xOrdinate}, {yOrdinate + 1, xOrdinate + 1},};
-
-                        int minesAround = 0;
-                        int length = NEIGHBOURS_ORDINATE.GetLength(0);
-                        for (int i = 0; i < length; i++)
-                        {
-                            int xOrdinateOfNeighbour = NEIGHBOURS_ORDINATE[i, 1];
-                            int yOrdinateOfNeighbour = NEIGHBOURS_ORDINATE[i, 0];
-
-                            bool isOutOfMapNeighbour = xOrdinateOfNeighbour < 0
-                                    || xOrdinateOfNeighbour == MAP_WIDTH
-                                    || yOrdinateOfNeighbour < 0
-                                    || yOrdinateOfNeighbour == MAP_HEIGHT;
-                            if (isOutOfMapNeighbour)
-                            {
-                                continue;
-                            }
-
-                            bool isMineOwnerNeighbour = map[yOrdinateOfNeighbour, xOrdinateOfNeighbour].Equals("*");
-                            if (isMineOwnerNeighbour)
-                            {
-                                minesAround++;
-                            }
-                        }
-
-                        mapReport[yOrdinate, xOrdinate] = minesAround.ToString();
+                        maxValue = matrix[i, j];
+                        maxRow = i;
+                        maxCol = j;
                     }
                 }
             }
 
-            for (int yOrdinate = 0; yOrdinate < MAP_HEIGHT; yOrdinate++)
-            {
-                Console.WriteLine("\n");
-                for (int xOrdinate = 0; xOrdinate < MAP_WIDTH; xOrdinate++)
-                {
-                    String currentCellReport = mapReport[yOrdinate, xOrdinate];
-                    Console.Write(currentCellReport);
-                }
-            }
-            Console.ReadLine();
+            Console.WriteLine($"\nPhần tử lớn nhất là: {maxValue}");
+            Console.WriteLine($"Tọa độ: hàng {maxRow}, cột {maxCol}");
         }
     }
 }
