@@ -1,93 +1,49 @@
-﻿﻿using System;
+﻿
+﻿using System;
 
-namespace LeapYearCalculator
+namespace dotnet_cal_day_in_month
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(String[] args)
         {
-            int year;
-            bool isLeapYear = false;
-            Console.WriteLine("Enter a year: ");
-            year = Convert.ToInt32(Console.ReadLine());
-
-                     bool isDivisibleBy4 = year % 4 == 0;
-                        if (isDivisibleBy4)
-                        {
-                            bool isDivisibleBy100 = year % 100 == 0;
-                            if (isDivisibleBy100)
-                            {
-                                bool isDivisibleBy400 = year % 400 == 0;
-                                if (isDivisibleBy400)
-                                {
-                                    isLeapYear = true;
-                                }
-                            }
-                            else
-                            {
-                                isLeapYear = true;
-                            }
-                        }
-                        if (isLeapYear)
-                        {
-                            Console.WriteLine("{0} is a leap year", year);
-                        }
-                        else
-                        {
-                            Console.WriteLine("{0} is NOT a leap year", year);
-                        }
-            
-                      if (year % 4 == 0)
-                        {
-                            if (year % 100 == 0)
-                            {
-                                if (year % 400 == 0)
-                                {
-                                    isLeapYear = true;
-                                }
-                            }
-                            else
-                            {
-                                isLeapYear = true;
-                            }
-                        }
-
-                        if (isLeapYear)
-                        {
-                            Console.WriteLine("{0} is a leap year", year);
-                        }
-                        else
-                        {
-                            Console.WriteLine("{0} is NOT a leap year", year);
-                        }
-            
-               bool isDivisibleBy4 = year % 4 == 0;
-            if (isDivisibleBy4)
+            Console.WriteLine("Which month that you want to count days? ");
+            int month = Int32.Parse(Console.ReadLine());
+            string daysInMonth;
+            switch (month)
             {
-                bool isDivisibleBy100 = year % 100 == 0;
-                if (isDivisibleBy100)
-                {
-                    bool isDivisibleBy400 = year % 400 == 0;
-                    if (isDivisibleBy400)
-                    {
-                        isLeapYear = true;
-                    }
-                }
-                else
-                {
-                    isLeapYear = true;
-                }
+                case 2:
+                    daysInMonth = "28 or 29";
+                    break;
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    daysInMonth = "31";
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    daysInMonth = "30";
+                    break;
+                default:
+                    daysInMonth = "";
+                    break;
             }
 
-            if (isLeapYear)
+            if (daysInMonth != "")
             {
-                Console.WriteLine("{0} is a leap year", year);
+                Console.WriteLine("The month {0} has {1} days!", month, daysInMonth);
             }
             else
             {
-                Console.WriteLine("{0} is NOT a leap year", year);
+                Console.WriteLine("Invalid input!");
             }
-
         }
+
     }
 }
