@@ -11,7 +11,7 @@ namespace LeapYearCalculator
             Console.WriteLine("Enter a year: ");
             year = Convert.ToInt32(Console.ReadLine());
 
-            /*            bool isDivisibleBy4 = year % 4 == 0;
+                     bool isDivisibleBy4 = year % 4 == 0;
                         if (isDivisibleBy4)
                         {
                             bool isDivisibleBy100 = year % 100 == 0;
@@ -36,8 +36,8 @@ namespace LeapYearCalculator
                         {
                             Console.WriteLine("{0} is NOT a leap year", year);
                         }
-            */
-            /*            if (year % 4 == 0)
+            
+                      if (year % 4 == 0)
                         {
                             if (year % 100 == 0)
                             {
@@ -60,8 +60,8 @@ namespace LeapYearCalculator
                         {
                             Console.WriteLine("{0} is NOT a leap year", year);
                         }
-            */
-            bool isDivisibleBy4 = year % 4 == 0;
+            
+               bool isDivisibleBy4 = year % 4 == 0;
             if (isDivisibleBy4)
             {
                 bool isDivisibleBy100 = year % 100 == 0;
