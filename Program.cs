@@ -1,28 +1,47 @@
-﻿using System;
+﻿﻿using System;
 
-namespace dotnet_find_value_in_array
+namespace dotnet_FindMax
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string[] students = { "Christian", "Michael", "Camila", "Sienna", "Tanya", "Connor", "Zachariah", "Mallory", "Zoe", "Emily" };
-            Console.WriteLine("Enter a name’s student:");
-            string input_name = Console.ReadLine();
-            bool isExist = false;
-            for (int i = 0; i < students.Length; i++)
+            int size;
+            int[] array;
+            do
             {
-                if (students[i].Equals(input_name))
+                Console.WriteLine("Enter a size:");
+                size = Int32.Parse(Console.ReadLine());
+                if (size > 20)
+                    Console.WriteLine("Size should not exceed 20");
+            } while (size > 20);
+
+            array = new int[size];
+            int i = 0;
+            while (i < array.Length)
+            {
+                Console.WriteLine("Enter element" + (i + 1) + " : ");
+                array[i] = Int32.Parse(Console.ReadLine());
+                i++;
+            }
+
+            Console.WriteLine("Property list: ");
+            for (int j = 0; j < array.Length; j++)
+            {
+                Console.WriteLine(array[j] + "\t");
+            }
+
+            int max = array[0];
+            int index = 1;
+            for (int j = 0; j < array.Length; j++)
+            {
+                if (array[j] > max)
                 {
-                    Console.WriteLine("Position of the students in the list " + input_name + " is: " + (i + 1));
-                    isExist = true;
-                    break;
+                    max = array[j];
+                    index = j + 1;
                 }
             }
-            if (!isExist)
-            {
-                Console.WriteLine("Not found" + input_name + " in the list.");
-            }
+            Console.WriteLine("The largest property value in the list is " + max + " ,at position " + index);
         }
     }
 }
